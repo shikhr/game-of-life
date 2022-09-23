@@ -56,6 +56,26 @@ class Game {
     }
     return count;
   }
+
+  step() {
+    const buffer = JSON.parse(JSON.stringify(this.grid));
+
+    for (let i = 0; i < this.options.cellsX; i++) {
+      for (let j = 0; j < this.options.cellsY; j++) {
+        const aliveCount = this.calculateNeighbours(i, j);
+        if (this.grid[i][j]) {
+          if (aliveCount < 2 || aliveCount > 3) {
+            buffer[i][j] = false;
+          }
+        } else {
+          if (aliveCount === 3) {
+            buffer[i][j] = true;
+          }
+        }
+      }
+    }
+    this.grid = buffer;
+  }
 }
 
 export default Game;

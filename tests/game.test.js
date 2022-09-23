@@ -56,4 +56,21 @@ describe('game', () => {
 
     expect(game.calculateNeighbours(5, 5)).toBe(4);
   });
+
+  it('can step to next life state', () => {
+    const game = new Game(canvas);
+    game.setPoints([
+      [1, 0],
+      [2, 1],
+      [1, 2],
+      [7, 8],
+    ]);
+    game.step();
+    expect(game.grid).toStrictEqual(
+      getTestGrid([
+        [1, 1],
+        [2, 1],
+      ])
+    );
+  });
 });
