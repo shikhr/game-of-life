@@ -33,6 +33,7 @@ describe('game', () => {
 
     expect(game.canvas).toBe(canvas);
     expect(game.options).toStrictEqual(gameOptions);
+    expect(game.round).toStrictEqual(0);
   });
 
   it('initialises default arrray with false values', () => {
@@ -59,6 +60,7 @@ describe('game', () => {
 
   it('can step to next life state', () => {
     const game = new Game(canvas);
+    const prevRound = game.round;
     game.setPoints([
       [1, 0],
       [2, 1],
@@ -72,5 +74,9 @@ describe('game', () => {
         [2, 1],
       ])
     );
+    expect(game.round).toBe(prevRound + 1);
+    game.step();
+    expect(game.grid).toStrictEqual(getTestGrid([]));
+    expect(game.round).toBe(prevRound + 2);
   });
 });

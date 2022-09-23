@@ -14,6 +14,7 @@ class Game {
     this.ctx = this.canvas.getContext('2d');
     this.options = this.setOptions(options);
     this.initGrid();
+    this.round = 0;
   }
 
   setOptions(options) {
@@ -75,6 +76,7 @@ class Game {
       }
     }
     this.grid = buffer;
+    this.round++;
   }
 }
 
