@@ -15,30 +15,34 @@ class Game {
     this.options = this.setOptions(options);
     this.initGrid();
   }
+
   setOptions(options) {
     return { ...this.defaultOptions, ...options };
   }
+
   initGrid() {
     this.grid = new Array(this.options.cellsX);
     for (let i = 0; i < this.options.cellsX; i++) {
       this.grid[i] = new Array(this.options.cellsY).fill(false);
     }
   }
+
   setPoints(points) {
     points.forEach((point) => {
       const [x, y] = point;
       this.grid[x][y] = true;
     });
   }
+
   calculateNeighbours(x, y) {
     let count = 0;
     for (let i = x - 1; i <= x + 1; i++) {
       for (let j = y - 1; j <= y + 1; j++) {
         if (
           i < 0 ||
-          i > this.options.cellsX ||
+          i > this.options.cellsX - 1 ||
           j < 0 ||
-          j > this.options.cellsY
+          j > this.options.cellsY - 1
         ) {
           continue;
         }

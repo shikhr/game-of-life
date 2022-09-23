@@ -51,6 +51,7 @@ describe('game', () => {
       [4, 4],
       [4, 5],
       [0, 1], //non-neighbour
+      [9, 9], //non-neighbour
     ]);
 
     expect(game.calculateNeighbours(5, 5)).toBe(4);
