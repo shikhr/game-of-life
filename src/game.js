@@ -9,7 +9,9 @@ class Game {
   };
   grid;
   constructor(canvas, options = {}) {
+    /**@type {HTMLCanvasElement} */
     this.canvas = canvas;
+    this.ctx = this.canvas.getContext('2d');
     this.options = this.setOptions(options);
     this.initGrid();
   }
