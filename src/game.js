@@ -19,9 +19,38 @@ class Game {
     return { ...this.defaultOptions, ...options };
   }
   initGrid() {
-    this.grid = new Array(this.options.cellsX).fill(
-      new Array(this.options.cellsY).fill(false)
-    );
+    this.grid = new Array(this.options.cellsX);
+    for (let i = 0; i < this.options.cellsX; i++) {
+      this.grid[i] = new Array(this.options.cellsY).fill(false);
+    }
+  }
+  setPoints(points) {
+    points.forEach((point) => {
+      const [x, y] = point;
+      this.grid[x][y] = true;
+    });
+  }
+  calculateNeighbours(x, y) {
+    let count = 0;
+    for (let i = x - 1; i <= x + 1; i++) {
+      for (let j = y - 1; j <= y + 1; j++) {
+        if (
+          i < 0 ||
+          i > this.options.cellsX ||
+          j < 0 ||
+          j > this.options.cellsY
+        ) {
+          continue;
+        }
+        if (i === x && j === y) {
+          continue;
+        }
+        if (this.grid[i][j]) {
+          count++;
+        }
+      }
+    }
+    return count;
   }
 }
 
