@@ -80,6 +80,13 @@ class Game {
     this.draw();
   }
 
+  togglePoint(x, y) {
+    const cx = Math.floor(x / this.options.cellSize);
+    const cy = Math.floor(y / this.options.cellSize);
+    this.grid[cx][cy] = !this.grid[cx][cy];
+    this.draw();
+  }
+
   calculateNeighbours(x, y) {
     let count = 0;
     for (let i = x - 1; i <= x + 1; i++) {
