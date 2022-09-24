@@ -78,6 +78,10 @@ class Game {
     this.grid = buffer;
     this.round++;
   }
+  clearGrid() {
+    this.initGrid();
+    this.round = 0;
+  }
 }
 
 export default Game;

@@ -15,7 +15,7 @@ const getTestGrid = (points) => {
   for (let i = 0; i < gameOptions.cellsX; i++) {
     grid[i] = new Array(gameOptions.cellsY).fill(false);
   }
-  if (points) {
+  if (points && points.length > 0) {
     points.forEach((point) => {
       const [x, y] = point;
       grid[x][y] = true;
@@ -78,5 +78,21 @@ describe('game', () => {
     game.step();
     expect(game.grid).toStrictEqual(getTestGrid([]));
     expect(game.round).toBe(prevRound + 2);
+  });
+
+  it('can clear all alive cells', () => {
+    const game = new Game(canvas);
+    const prevRound = game.round;
+    game.step();
+    game.step();
+    game.setPoints([
+      [0, 0],
+      [5, 5],
+      [9, 9],
+    ]);
+    expect(game.round).toBe(2);
+    game.clearGrid();
+    expect(game.grid).toStrictEqual(getTestGrid([]));
+    expect(game.round).toBe(0);
   });
 });
