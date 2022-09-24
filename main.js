@@ -6,8 +6,9 @@ const playEl = document.getElementById('play');
 const nextEl = document.getElementById('next');
 const clearEL = document.getElementById('clear');
 const randomiseEL = document.getElementById('randomise');
+const canvasEl = document.getElementById('canvas');
 
-const game = new Game(document.getElementById('canvas'));
+const game = new Game(canvasEl);
 
 let timer = undefined;
 
@@ -55,4 +56,14 @@ playEl.addEventListener('click', (e) => {
 
 clearEL.addEventListener('click', (e) => {
   stopGame();
+});
+
+canvasEl.addEventListener('click', (e) => {
+  if (timer) {
+    return;
+  }
+  const rect = e.currentTarget.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  game.togglePoint(x, y);
 });
