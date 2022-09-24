@@ -95,4 +95,10 @@ describe('game', () => {
     expect(game.grid).toStrictEqual(getTestGrid([]));
     expect(game.round).toBe(0);
   });
+
+  it('can fill grid with random values', () => {
+    const game = new Game(canvas);
+    game.randomise();
+    expect(game.grid).not.toStrictEqual(getTestGrid([]));
+  });
 });

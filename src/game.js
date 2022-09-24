@@ -82,6 +82,14 @@ class Game {
     this.initGrid();
     this.round = 0;
   }
+  randomise() {
+    this.clearGrid();
+    for (let i = 0; i < this.options.cellsX; i++) {
+      for (let j = 0; j < this.options.cellsY; j++) {
+        this.grid[i][j] = Math.random() < 0.3;
+      }
+    }
+  }
 }
 
 export default Game;
