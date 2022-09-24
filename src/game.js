@@ -4,7 +4,7 @@ class Game {
     cellsX: 40,
     cellsY: 40,
     cellColor: '#FF9A24',
-    gridColor: '#FFDBB0',
+    gridColor: '#5a544b',
     canvasColor: '#38342E',
   };
   grid;
@@ -33,8 +33,8 @@ class Game {
       for (let j = 0; j < this.options.cellsY; j++) {
         if (this.grid[i][j]) {
           this.ctx.fillRect(
-            i * this.options.cellSize + 0.5,
-            j * this.options.cellSize + 0.5,
+            i * this.options.cellSize + gap,
+            j * this.options.cellSize + gap,
             this.options.cellSize,
             this.options.cellSize
           );
@@ -46,6 +46,7 @@ class Game {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
   drawGrid() {
+    this.ctx.strokeStyle = this.options.gridColor;
     const gap = 0.5;
     for (let i = 0; i <= this.options.cellsX; i++) {
       this.ctx.beginPath();
