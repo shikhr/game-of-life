@@ -136,6 +136,7 @@ class Game {
         this.grid[i][j] = Math.random() < 0.3;
       }
     }
+    this.round = 0;
     this.draw();
   }
 }
