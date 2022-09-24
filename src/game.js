@@ -1,6 +1,6 @@
 class Game {
   defaultOptions = {
-    cellSize: 15,
+    cellSize: 18,
     cellsX: 40,
     cellsY: 40,
     cellColor: '#FF9A24',
