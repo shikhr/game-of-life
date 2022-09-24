@@ -15,7 +15,6 @@ class Game {
     this.options = this.setOptions(options);
     this.setCanvas();
     this.initGrid();
-    this.randomise();
     this.round = 0;
   }
   setCanvas() {
