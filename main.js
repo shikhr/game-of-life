@@ -17,6 +17,7 @@ const stopGame = () => {
   timer = undefined;
   game.clearGrid();
   playEl.textContent = 'Play';
+  clearEL.textContent = 'Clear';
   roundEl.textContent = game.round;
   randomiseEL.disabled = false;
   nextEl.disabled = false;
@@ -26,6 +27,7 @@ const pauseGame = () => {
   clearInterval(timer);
   timer = undefined;
   playEl.textContent = 'Play';
+  clearEL.textContent = 'Clear';
   randomiseEL.disabled = false;
   nextEl.disabled = false;
 };
@@ -52,6 +54,7 @@ playEl.addEventListener('click', (e) => {
     return;
   }
   playEl.textContent = 'Pause';
+  clearEL.textContent = 'Stop';
   randomiseEL.disabled = true;
   nextEl.disabled = true;
   timer = setInterval(() => {
