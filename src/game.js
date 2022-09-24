@@ -1,8 +1,8 @@
 class Game {
   defaultOptions = {
     cellSize: 10,
-    cellsX: 80,
-    cellsY: 100,
+    cellsX: 70,
+    cellsY: 70,
     cellColor: '#FF9A24',
     gridColor: '#FFDBB0',
     canvasColor: '#38342E',
@@ -13,6 +13,8 @@ class Game {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.options = this.setOptions(options);
+    this.canvas.width = this.options.cellsX * this.options.cellSize;
+    this.canvas.height = this.options.cellsY * this.options.cellSize;
     this.initGrid();
     this.round = 0;
   }
